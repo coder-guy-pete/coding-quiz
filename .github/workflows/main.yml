@@ -1,0 +1,36 @@
+name: Build and Test workflow
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - staging
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+
+      - name: Use Node.js 21.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 21.x
+
+      - name: Install Deps
+        run: npm install
+
+      - name: Run Build
+        run: npm run build
+
+      - name: Start Server
+        run: npm start
+
+      - name: Wait for Server
+        run:
+          wait-on --timeout 60000 --interval 5 http://localhost:3001
+
+      - name: Run Tests
+        run: npm run test
