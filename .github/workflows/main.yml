@@ -1,4 +1,4 @@
-name: Lint and Test workflow
+name: Build and Test workflow
 
 on:
   pull_request:
@@ -24,9 +24,6 @@ jobs:
 
       - name: Run Build
         run: npm run build
-
-      - name: Run Start
-        run: npm run start
 
       - name: Run Tests
         run: npm run test

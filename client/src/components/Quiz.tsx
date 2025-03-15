@@ -82,7 +82,7 @@ const Quiz = () => {
 
   return (
     <div className='card p-4'>
-      <h2>{currentQuestion.question}</h2>
+      <h2 data-cy="question">{currentQuestion.question}</h2>
       <div className="mt-3">
       {currentQuestion.answers.map((answer, index) => (
         <div key={index} className="d-flex align-items-center mb-2">
