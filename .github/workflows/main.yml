@@ -29,10 +29,8 @@ jobs:
         run: npm start
 
       - name: Wait for Server
-        uses: cypress-io/wait-on@v2.1.1
-        with:
-          url: http://localhost:3001
-          timeout: 60s
+        run:
+          wait-on --timeout 60000 --interval 5 http://localhost:3001
 
       - name: Run Tests
         run: npm run test
